@@ -1,1 +1,16 @@
+# Spring boot config
+spring:
+  profiles:
+    active: development
+    # Database config
+  jpa:
+    database: POSTGRESQL
+    
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: url
+    username: user
+    password: password
 
+  server:
+    port:8080
