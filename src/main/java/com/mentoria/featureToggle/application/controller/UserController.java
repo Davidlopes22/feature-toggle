@@ -23,6 +23,8 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity createUser(@RequestBody User user){
+        System.out.println(user);
+        userService.saveUser(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

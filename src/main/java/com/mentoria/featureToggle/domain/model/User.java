@@ -6,31 +6,33 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="user")
+@Entity
+@Table(name="users")
+@EntityListeners(AuditingEntityListener.class)
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="USER_NAME", nullable = false)
+    @Column(name="userName", nullable = false)
     private String name;
 
-    @Column(name="USER_PASSWORD", nullable = false)
+    @Column(name="userPassword", nullable = false)
     private String password;
 
     @CreatedDate
-    @Column(name="DT_CREATION", nullable = false)
-    private LocalDateTime dt_creation;
+    @Column(name="created_at", nullable = false, updatable = false)
+    private Date creationDate;
 
     @LastModifiedDate
-    @Column(name="DT_UPDATE")
-    private LocalDateTime dt_update;
+    @Column(name="updateDate")
+    private Date  updateDate;
 
 }
