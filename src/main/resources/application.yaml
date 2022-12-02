@@ -5,12 +5,14 @@ spring:
     # Database config
   jpa:
     database: POSTGRESQL
-    
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: url
-    username: user
-    password: password
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: davidLopes
+    password: W@ro6u*952IcH8SloIT!
 
   server:
     port:8080

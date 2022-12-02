@@ -2,6 +2,7 @@ package com.mentoria.featureToggle.application.controller;
 
 import com.mentoria.featureToggle.domain.model.User;
 import com.mentoria.featureToggle.domain.service.UserService;
+import com.mentoria.featureToggle.infrastructure.exception.UserException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +24,9 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity createUser(@RequestBody User user){
-        System.out.println(user);
+
         userService.saveUser(user);
-        return ResponseEntity.ok(HttpStatus.OK);
+        return   ResponseEntity.ok(HttpStatus.OK);
     }
 
 }

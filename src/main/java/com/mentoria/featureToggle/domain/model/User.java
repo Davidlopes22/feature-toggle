@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 @Data
@@ -22,17 +23,18 @@ public class User {
     private Long id;
 
     @Column(name="userName", nullable = false)
+    @NotEmpty(message = "Name may not be empty")
     private String name;
 
     @Column(name="userPassword", nullable = false)
+    @NotEmpty(message = "Password may not be empty")
     private String password;
 
     @CreatedDate
     @Column(name="created_at", nullable = false, updatable = false)
-    private Date creationDate;
+    private Date createdAt;
 
     @LastModifiedDate
-    @Column(name="updateDate")
-    private Date  updateDate;
+    private Date  updateAt;
 
 }
