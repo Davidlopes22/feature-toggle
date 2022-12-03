@@ -1,8 +1,6 @@
 # Spring boot config
 spring:
-  profiles:
-    active: development
-    # Database config
+  # Database config
   jpa:
     database: POSTGRESQL
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -14,5 +12,3 @@ spring:
     username: davidLopes
     password: W@ro6u*952IcH8SloIT!
 
-  server:
-    port:8080
