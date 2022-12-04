@@ -1,21 +1,17 @@
 package com.mentoria.featuretoggle.application.controller;
 
+import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
 import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
-import com.mentoria.featuretoggle.infrastructure.mappers.UsersMapper;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 
 import javax.validation.Valid;
 
-@Controller
+@RestController
 @AllArgsConstructor
 @RequestMapping("/user")
 public class UserController {
@@ -24,8 +20,14 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createUser(@RequestBody @Valid UserDTO userDTO) {
-        userService.save(UsersMapper.toEntity(userDTO));
+    public void createUser(@RequestBody @Valid UserCreationDTO userCreationDTO) {
+        userService.save(userCreationDTO);
+    }
+
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserDTO findUser(@PathVariable("id") Long id) {
+        return userService.findById(id);
     }
 
 }

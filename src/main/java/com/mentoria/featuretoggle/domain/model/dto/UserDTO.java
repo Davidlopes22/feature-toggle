@@ -1,17 +1,22 @@
 package com.mentoria.featuretoggle.domain.model.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import java.util.Date;
 
 @Data
-@NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class UserDTO {
-    @NotBlank
+
+    private Long id;
+
     private String name;
 
-    @NotBlank
-    private String password;
+    private Date createdAt;
+
+    private Date updateAt;
 
 }
