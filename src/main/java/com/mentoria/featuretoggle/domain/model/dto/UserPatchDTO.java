@@ -2,6 +2,7 @@ package com.mentoria.featuretoggle.domain.model.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.logging.log4j.util.Strings;
 
 import javax.validation.constraints.AssertTrue;
 
@@ -13,9 +14,7 @@ public class UserPatchDTO {
     private String password;
 
     @AssertTrue(message = "name or password is required")
-    private boolean isNameOrPasswordExists() {
-        return ((this.name != null) && !this.name.isEmpty())
-                ||
-                ((this.password != null) && !this.password.isEmpty());
+    private boolean isNameOrPasswordSetted() {
+        return !Strings.isBlank(this.name) || !Strings.isBlank(this.password);
     }
 }

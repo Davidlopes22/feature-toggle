@@ -1,5 +1,6 @@
 package com.mentoria.featuretoggle.domain.model;
 
+import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
 import lombok.Data;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 import java.util.Date;
+import java.util.Optional;
 
 @Data
 @Builder
@@ -42,4 +44,13 @@ public class User {
     @LastModifiedDate
     private Date updateAt;
 
+    public void updateFrom(UserPatchDTO userPatchDTO) {
+        this.setName(
+                Optional.ofNullable(userPatchDTO.getName())
+                        .orElse(this.name));
+        this.setPassword(
+                Optional.ofNullable(userPatchDTO.getPassword())
+                        .orElse(this.password));
+        this.setUpdateAt(new Date());
+    }
 }
