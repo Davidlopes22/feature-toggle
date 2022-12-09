@@ -11,4 +11,6 @@ public interface UserService {
     UserDTO findById(Long id);
 
     void patch(UserPatchDTO userPatchDTO, Long id);
+
+    void delete(Long id);
 }

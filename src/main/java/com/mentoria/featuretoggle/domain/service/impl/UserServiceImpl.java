@@ -49,5 +49,11 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(auxUser);
     }
+    public void delete(Long id){
+        Optional<User> auxUserOptional = userRepository.findById(id);
+        User auxUser = auxUserOptional.stream().findFirst().orElseThrow(() ->
+                new UserException(String.format("impossible delete user of id: %d, we couldn't found", id)));
+        userRepository.delete(auxUser);
+    }
 
 }

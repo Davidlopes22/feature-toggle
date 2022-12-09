@@ -37,4 +37,10 @@ public class UserController {
         userService.patch(userCreationDTO, id);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteUser(@PathVariable("id") Long id){
+        userService.delete(id);
+    }
+
 }
