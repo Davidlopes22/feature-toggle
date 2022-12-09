@@ -2,6 +2,7 @@ package com.mentoria.featuretoggle.application.controller;
 
 import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
 import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
+import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
 
 import org.springframework.http.HttpStatus;
@@ -28,6 +29,12 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public UserDTO findUser(@PathVariable("id") Long id) {
         return userService.findById(id);
+    }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void patchUser(@PathVariable("id") Long id, @RequestBody @Valid UserPatchDTO userCreationDTO){
+        userService.patch(userCreationDTO, id);
     }
 
 }
