@@ -1,8 +1,8 @@
 package com.mentoria.featuretoggle.domain.service;
 
-import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 
 public interface UserService {
 

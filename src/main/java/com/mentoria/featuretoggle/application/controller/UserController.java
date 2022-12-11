@@ -1,8 +1,8 @@
 package com.mentoria.featuretoggle.application.controller;
 
-import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
 
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,9 @@
 package com.mentoria.featuretoggle.domain.service.impl;
 
 import com.mentoria.featuretoggle.domain.model.User;
-import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
 import com.mentoria.featuretoggle.infrastructure.exception.UserException;
 import com.mentoria.featuretoggle.infrastructure.mappers.UsersMapper;

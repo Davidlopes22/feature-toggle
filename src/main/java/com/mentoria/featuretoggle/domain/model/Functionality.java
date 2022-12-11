@@ -1,11 +1,9 @@
 package com.mentoria.featuretoggle.domain.model;
 
-import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
-import lombok.Data;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
-
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -13,18 +11,16 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
 import java.util.Date;
-import java.util.Optional;
 
 @Data
-@Builder
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name="functionalities")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class Functionality {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,8 +29,8 @@ public class User {
     @NotEmpty
     private String name;
 
-    @NotEmpty
-    private String password;
+    @NotNull
+    private Boolean active;
 
     @NotNull
     @CreatedDate
@@ -43,13 +39,4 @@ public class User {
 
     @LastModifiedDate
     private Date updateAt;
-
-    public void updateFrom(UserPatchDTO userPatchDTO) {
-        this.setName(
-                Optional.ofNullable(userPatchDTO.getName())
-                        .orElse(this.name));
-        this.setPassword(
-                Optional.ofNullable(userPatchDTO.getPassword())
-                        .orElse(this.password));
-    }
 }
