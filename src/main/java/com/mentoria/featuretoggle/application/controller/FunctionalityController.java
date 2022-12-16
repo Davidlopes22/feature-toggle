@@ -24,7 +24,7 @@ public class FunctionalityController {
     }
     @GetMapping("{/id}")
     @ResponseStatus(HttpStatus.OK)
-    public FunctionalityDTO getFunctionality(@RequestParam Long id){
+    public FunctionalityDTO getFunctionality(@PathVariable Long id){
         return functionalityService.findById(id);
     }
 }
