@@ -1,13 +1,14 @@
 package com.mentoria.featuretoggle.domain.service.impl;
 
 import com.mentoria.featuretoggle.domain.model.User;
+import com.mentoria.featuretoggle.domain.service.UserService;
+import com.mentoria.featuretoggle.infrastructure.mappers.UsersMapper;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserResponseDTO;
-import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
-import com.mentoria.featuretoggle.domain.service.UserService;
 import com.mentoria.featuretoggle.infrastructure.exception.UserException;
-import com.mentoria.featuretoggle.infrastructure.mappers.UsersMapper;
 import com.mentoria.featuretoggle.infrastructure.repository.UserRepository;
+
 
 import org.springframework.stereotype.Service;
 

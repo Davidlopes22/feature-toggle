@@ -1,10 +1,10 @@
 package com.mentoria.featuretoggle.infrastructure.mappers;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import com.mentoria.featuretoggle.domain.model.User;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserResponseDTO;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
 
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
