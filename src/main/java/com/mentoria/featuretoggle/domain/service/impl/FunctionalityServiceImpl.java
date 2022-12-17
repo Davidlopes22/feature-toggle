@@ -35,9 +35,17 @@ public class FunctionalityServiceImpl implements FunctionalityService {
         Optional<Functionality> optionalFunctionalityFromDB = functionalityRepository.findById(id);
         Functionality functionalityFromDB = optionalFunctionalityFromDB
                 .orElseThrow(() ->
-                        new FunctionalityException(String.format("Functionality of id: %d not found", id)));
+                        new FunctionalityException(String.format("We couldn't patch, functionality of id: %d not found", id)));
         functionalityFromDB.updateFrom(functionalityPatchDTO);
+        functionalityRepository.save(functionalityFromDB);
     }
 
+    public void delete(Long id) {
+        Optional<Functionality> optionalFunctionalityFromDB = functionalityRepository.findById(id);
+        Functionality functionalityFromDB = optionalFunctionalityFromDB
+                .orElseThrow(() ->
+                        new FunctionalityException(String.format("We couldn't delete this functionality, id: %d not found", id)));
+        functionalityRepository.delete(functionalityFromDB);
+    }
 
 }

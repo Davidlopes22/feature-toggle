@@ -10,4 +10,6 @@ public interface FunctionalityService {
     FunctionalityResponseDTO findById(Long id);
 
     void patch(Long id, FunctionalityPatchDTO functionalityPatchDTO);
+
+    void delete(Long id);
 }

@@ -30,9 +30,14 @@ public class FunctionalityController {
     }
 
     @PatchMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void patchFuncionality(@PathVariable("id") Long id, @RequestBody @Valid FunctionalityPatchDTO functionalityPatchDTO){
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void patchFunctionality(@PathVariable("id") Long id, @RequestBody @Valid FunctionalityPatchDTO functionalityPatchDTO) {
         functionalityService.patch(id, functionalityPatchDTO);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteFunctionality(@PathVariable("id") Long id) {
+        functionalityService.delete(id);
+    }
 }
