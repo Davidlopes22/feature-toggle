@@ -32,13 +32,13 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
+    @ResponseStatus(HttpStatus.CREATED)
     public void patchUser(@PathVariable("id") Long id, @RequestBody @Valid UserPatchDTO userCreationDTO) {
         userService.patch(userCreationDTO, id);
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     public void deleteUser(@PathVariable("id") Long id) {
         userService.delete(id);
     }
