@@ -2,7 +2,7 @@ package com.mentoria.featuretoggle.infrastructure.mappers;
 
 import com.mentoria.featuretoggle.domain.model.Functionality;
 import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityDTO;
+import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityResponseDTO;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -14,8 +14,8 @@ public class FunctionalitiesMapper {
                 .active(functionalityCreationDTO.getActive())
                 .build();
     }
-    public static FunctionalityDTO toDTO(Functionality functionality){
-        return FunctionalityDTO.builder().name(functionality.getName())
+    public static FunctionalityResponseDTO toDTO(Functionality functionality){
+        return FunctionalityResponseDTO.builder().name(functionality.getName())
                 .active(functionality.getActive())
                 .id(functionality.getId())
                 .createdAt(functionality.getCreatedAt())

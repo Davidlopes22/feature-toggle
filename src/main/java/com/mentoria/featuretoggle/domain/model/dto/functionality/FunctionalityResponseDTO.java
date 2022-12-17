@@ -2,11 +2,13 @@ package com.mentoria.featuretoggle.domain.model.dto.functionality;
 
 
 import lombok.Builder;
+import lombok.Data;
 
 import java.util.Date;
 
+@Data
 @Builder
-public class FunctionalityDTO {
+public class FunctionalityResponseDTO {
 
     private final Long id;
 

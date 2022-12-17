@@ -1,7 +1,7 @@
 package com.mentoria.featuretoggle.application.controller;
 
 import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.user.UserDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserResponseDTO;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
 
@@ -27,7 +27,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO findUser(@PathVariable("id") Long id) {
+    public UserResponseDTO findUser(@PathVariable("id") Long id) {
         return userService.findById(id);
     }
 

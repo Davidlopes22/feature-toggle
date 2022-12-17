@@ -2,7 +2,7 @@ package com.mentoria.featuretoggle.domain.service.impl;
 
 import com.mentoria.featuretoggle.domain.model.User;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.user.UserDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserResponseDTO;
 import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
 import com.mentoria.featuretoggle.infrastructure.exception.UserException;
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(UsersMapper.toEntity(userCreationDTO));
     }
 
-    public UserDTO findById(Long id) {
+    public UserResponseDTO findById(Long id) {
         Optional<User> auxUserOptional = userRepository.findById(id);
         return auxUserOptional
                 .map(UsersMapper::toDto)

@@ -1,8 +1,8 @@
 package com.mentoria.featuretoggle.application.controller;
 
-import com.mentoria.featuretoggle.domain.model.Functionality;
 import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityDTO;
+import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityPatchDTO;
+import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityResponseDTO;
 import com.mentoria.featuretoggle.domain.service.FunctionalityService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,12 +19,20 @@ public class FunctionalityController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createFunctionality(@RequestBody @Valid FunctionalityCreationDTO functionalityCreationDTO){
+    public void createFunctionality(@RequestBody @Valid FunctionalityCreationDTO functionalityCreationDTO) {
         functionalityService.save(functionalityCreationDTO);
     }
-    @GetMapping("{/id}")
+
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public FunctionalityDTO getFunctionality(@PathVariable Long id){
+    public FunctionalityResponseDTO getFunctionality(@PathVariable("id") Long id) {
         return functionalityService.findById(id);
     }
+
+    @PatchMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void patchFuncionality(@PathVariable("id") Long id, @RequestBody @Valid FunctionalityPatchDTO functionalityPatchDTO){
+        functionalityService.patch(id, functionalityPatchDTO);
+    }
+
 }

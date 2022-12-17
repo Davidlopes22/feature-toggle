@@ -1,5 +1,6 @@
 package com.mentoria.featuretoggle.domain.model;
 
+import com.mentoria.featuretoggle.domain.model.dto.functionality.FunctionalityPatchDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,13 +13,14 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.Optional;
 
 @Data
 @Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="functionalities")
+@Table(name = "functionalities")
 @EntityListeners(AuditingEntityListener.class)
 public class Functionality {
 
@@ -39,4 +41,11 @@ public class Functionality {
 
     @LastModifiedDate
     private Date updateAt;
+
+    public void updateFrom(FunctionalityPatchDTO functionalityPatchDTO) {
+        this.setName(Optional.ofNullable(functionalityPatchDTO.getName())
+                .orElse(this.name));
+        this.setActive(Optional.ofNullable(functionalityPatchDTO.getActive()).
+                orElse(this.active));
+    }
 }
