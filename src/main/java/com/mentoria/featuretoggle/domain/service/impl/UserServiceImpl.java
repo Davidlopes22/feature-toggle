@@ -1,13 +1,14 @@
 package com.mentoria.featuretoggle.domain.service.impl;
 
 import com.mentoria.featuretoggle.domain.model.User;
-import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
-import com.mentoria.featuretoggle.infrastructure.exception.UserException;
 import com.mentoria.featuretoggle.infrastructure.mappers.UsersMapper;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserResponseDTO;
+import com.mentoria.featuretoggle.infrastructure.exception.UserException;
 import com.mentoria.featuretoggle.infrastructure.repository.UserRepository;
+
 
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(UsersMapper.toEntity(userCreationDTO));
     }
 
-    public UserDTO findById(Long id) {
+    public UserResponseDTO findById(Long id) {
         Optional<User> auxUserOptional = userRepository.findById(id);
         return auxUserOptional
                 .map(UsersMapper::toDto)
@@ -36,16 +37,18 @@ public class UserServiceImpl implements UserService {
 
     public void patch(UserPatchDTO userPatchDTO, Long id) {
         Optional<User> optionalDatabaseUser = userRepository.findById(id);
-        User databaseUser = optionalDatabaseUser.orElseThrow(() ->
-                new UserException(String.format("impossible patch user of id: %d, we couldn't found", id)));
+        User databaseUser = optionalDatabaseUser
+                .orElseThrow(() ->
+                        new UserException(String.format("impossible patch user of id: %d, we couldn't found", id)));
         databaseUser.updateFrom(userPatchDTO);
         userRepository.save(databaseUser);
     }
 
     public void delete(Long id) {
         Optional<User> optionalDatabaseUser = userRepository.findById(id);
-        User databaseUser = optionalDatabaseUser.orElseThrow(() ->
-                new UserException(String.format("impossible delete user of id: %d, we couldn't found", id)));
+        User databaseUser = optionalDatabaseUser
+                .orElseThrow(() ->
+                        new UserException(String.format("impossible delete user of id: %d, we couldn't found", id)));
         userRepository.delete(databaseUser);
     }
 

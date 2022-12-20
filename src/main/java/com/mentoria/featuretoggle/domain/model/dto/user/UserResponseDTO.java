@@ -1,4 +1,4 @@
-package com.mentoria.featuretoggle.domain.model.dto;
+package com.mentoria.featuretoggle.domain.model.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import java.util.Date;
 @Data
 @Builder
 @AllArgsConstructor
-public class UserDTO {
+public class UserResponseDTO {
 
     private Long id;
 

@@ -1,12 +1,20 @@
 package com.mentoria.featuretoggle.application.controller;
 
-import com.mentoria.featuretoggle.domain.model.dto.UserCreationDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserDTO;
-import com.mentoria.featuretoggle.domain.model.dto.UserPatchDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserCreationDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserResponseDTO;
+import com.mentoria.featuretoggle.domain.model.dto.user.UserPatchDTO;
 import com.mentoria.featuretoggle.domain.service.UserService;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.AllArgsConstructor;
 
@@ -27,19 +35,19 @@ public class UserController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UserDTO findUser(@PathVariable("id") Long id) {
+    public UserResponseDTO findUser(@PathVariable("id") Long id) {
         return userService.findById(id);
     }
 
     @PatchMapping("/{id}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public void patchUser(@PathVariable("id") Long id, @RequestBody @Valid UserPatchDTO userCreationDTO){
+    @ResponseStatus(HttpStatus.CREATED)
+    public void patchUser(@PathVariable("id") Long id, @RequestBody @Valid UserPatchDTO userCreationDTO) {
         userService.patch(userCreationDTO, id);
     }
 
     @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public void deleteUser(@PathVariable("id") Long id){
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void deleteUser(@PathVariable("id") Long id) {
         userService.delete(id);
     }
 

@@ -1,4 +1,4 @@
-package com.mentoria.featuretoggle.domain.model.dto;
+package com.mentoria.featuretoggle.domain.model.dto.user;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
