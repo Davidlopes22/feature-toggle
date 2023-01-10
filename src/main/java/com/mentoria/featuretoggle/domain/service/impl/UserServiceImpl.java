@@ -24,13 +24,13 @@ public class UserServiceImpl implements UserService {
 
     public void save(UserCreationDTO userCreationDTO) {
 
-        userRepository.save(UsersMapper.toEntity(userCreationDTO));
+        userRepository.save(UsersMapper.toUser(userCreationDTO));
     }
 
     public UserResponseDTO findById(Long id) {
         Optional<User> auxUserOptional = userRepository.findById(id);
         return auxUserOptional
-                .map(UsersMapper::toDto)
+                .map(UsersMapper::toUserResponseDTO)
                 .orElseThrow(() ->
                         new UserException(String.format("user of id: %d not found", id)));
     }
