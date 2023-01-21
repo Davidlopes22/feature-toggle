@@ -1,14 +1,20 @@
 # Spring boot config
+rsa:
+  private-key=classpath:certs/private.pem
+  public-key=classpath:certs/public.pem
+
 spring:
   # Database config
   jpa:
-    database: POSTGRESQL
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: create-drop
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/postgres
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:localdb
     username: davidLopes
     password: W@ro6u*952IcH8SloIT!
-
+  h2:
+    console:
+      enabled: true
