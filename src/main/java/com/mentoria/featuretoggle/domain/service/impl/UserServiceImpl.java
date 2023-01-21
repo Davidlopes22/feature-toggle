@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
     public void save(UserCreationDTO userCreationDTO) {
 
-        userRepository.save(UsersMapper.toEntity(userCreationDTO));
+        userRepository.save(UsersMapper.toUser(userCreationDTO));
     }
 
     public UserResponseDTO findById(Long id) {
